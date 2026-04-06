@@ -55,24 +55,18 @@
 
             <div>
                 <div class="flex flex-col gap-4 items-center">
+                    <button 
+                        onclick="openYouTubeMobile('I_4cOPFQHJk')" 
+                        class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 transition duration-300 rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30 md:hidden">
+                        Get Started Now
+                    </button>
 
-    <!-- MOBILE BUTTON -->
-    <button 
-        onclick="openYouTubeMobile('I_4cOPFQHJk')" 
-        class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 transition duration-300 rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30 md:hidden">
-        Get Started Now (Mobile)
-    </button>
-
-    <!-- DESKTOP BUTTON -->
-    <a 
-        href="https://www.youtube.com/watch?v=I_4cOPFQHJk" 
-        target="_blank" 
-        class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 transition duration-300 rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30 hidden md:inline-block">
-        Get Started Now (Desktop)
-    </a>
-
-</div>
-
+                    <a 
+                        href="https://www.youtube.com/watch?v=I_4cOPFQHJk" 
+                        target="_blank" 
+                        class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 transition duration-300 rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30 hidden md:inline-block">
+                        Get Started Now
+                    </a>
             </div>
         </div>
     </section>
@@ -146,9 +140,21 @@
             </div>
 
             <div>
-                <button class="mt-4 px-8 py-3 bg-yellow-500 hover:bg-yellow-600 transition rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30">
-                    <a href="https://www.youtube.com/watch?v=F0wdKgH_yjc" target="_blank">Join The VIP Club</a>
-                </button>
+                <div>
+                <div class="flex flex-col gap-4 items-center">
+                    <button 
+                        onclick="openYouTubeMobile('F0wdKgH_yjc')" 
+                        class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 transition duration-300 rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30 md:hidden">
+                        Join The VIP Club
+                    </button>
+
+                    <a 
+                        href="https://youtu.be/F0wdKgH_yjc?si=QUwEts-PFuZZab84" 
+                        target="_blank" 
+                        class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 transition duration-300 rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30 hidden md:inline-block">
+                        Join The VIP Club
+                    </a>
+            </div>
             </div>
         </div>
     </section>
@@ -456,9 +462,21 @@ If you’re waiting for the perfect time — this is your sign.
             </div>
 
             <div>
-                <button class="mt-4 px-8 py-4 bg-yellow-500 hover:bg-yellow-600 transition rounded-full text-black font-semibold text-lg shadow-lg shadow-yellow-500/30 hover:scale-105">
-                    <a href="https://www.youtube.com/watch?v=I_4cOPFQHJk" target="_blank">Get Started Now</a>
-                </button>
+                <div>
+                <div class="flex flex-col gap-4 items-center">
+                    <button 
+                        onclick="openYouTubeMobile('Sn-ChDcXmq8')" 
+                        class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 transition duration-300 rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30 md:hidden">
+                        Get Started Now
+                    </button>
+
+                    <a 
+                        href="https://youtu.be/Sn-ChDcXmq8" 
+                        target="_blank" 
+                        class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 transition duration-300 rounded-full text-black font-semibold shadow-lg shadow-yellow-500/30 hidden md:inline-block">
+                        Get Started Now
+                    </a>
+            </div>
             </div>
         </div>
     </section>
@@ -500,24 +518,19 @@ If you’re waiting for the perfect time — this is your sign.
 function openYouTubeMobile(videoId) {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-    // YouTube app scheme
     const appLink = `vnd.youtube://${videoId}`;
     const webLink = `https://www.youtube.com/watch?v=${videoId}`;
 
-    // Detect iOS or Android
     const isAndroid = /android/i.test(userAgent);
     const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
     if (isAndroid || isIOS) {
-        // Try opening the app
         window.location = appLink;
 
-        // Fallback sa web after 500ms
         setTimeout(() => {
             window.open(webLink, '_blank');
         }, 500);
     } else {
-        // If not mobile, open web
         window.open(webLink, '_blank');
     }
 }
