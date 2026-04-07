@@ -572,29 +572,42 @@ function openYouTubeMobile(videoId) {
 
 const counters = document.querySelectorAll('.counter');
 
-counters.forEach(counter => {
-    const target = +counter.getAttribute('data-target');
-    const duration = 1000;
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counter = entry.target;
 
-    let start = 0;
-    let startTime = null;
+            const target = +counter.getAttribute('data-target');
+            const duration = 1000;
 
-    function animateCount(timestamp) {
-        if (!startTime) startTime = timestamp;
-        const progress = timestamp - startTime;
+            let startTime = null;
 
-        const current = Math.min(Math.floor((progress / duration) * target), target);
+            function animateCount(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = timestamp - startTime;
 
-        counter.innerText = current.toLocaleString();
+                const current = Math.min(Math.floor((progress / duration) * target), target);
 
-        if (progress < duration) {
+                counter.innerText = current.toLocaleString();
+
+                if (progress < duration) {
+                    requestAnimationFrame(animateCount);
+                } else {
+                    counter.innerText = target.toLocaleString() + "+";
+                }
+            }
+
             requestAnimationFrame(animateCount);
-        } else {
-            counter.innerText = target.toLocaleString() + "+";
-        }
-    }
 
-    requestAnimationFrame(animateCount);
+            observer.unobserve(counter);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+counters.forEach(counter => {
+    observer.observe(counter);
 });
 </script>
 </html>
