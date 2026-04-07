@@ -244,6 +244,36 @@
         </div>
     </section>
 
+    <section class="bg-[#0A0A0A] py-20 px-6 flex justify-center">
+        <div class="max-w-6xl w-full text-white flex flex-col gap-12">
+            <div class="text-center">
+                <h2 class="text-2xl md:text-4xl font-bold">
+                    20 Years of Experience
+                </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-[#111] border border-yellow-500/20 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-yellow-500/50 transition">
+                    <i class="fa-solid fa-globe text-yellow-500 text-3xl"></i>
+                    <h3 class="text-3xl font-bold text-yellow-400 counter" data-target="20">0</h3>
+                    <p class="text-gray-400 text-sm">Countries continuously expanding</p>
+                </div>
+
+                <div class="bg-[#111] border border-yellow-500/20 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-yellow-500/50 transition">
+                    <i class="fa-solid fa-trophy text-yellow-500 text-3xl"></i>
+                    <h3 class="text-3xl font-bold text-yellow-400 counter" data-target="10000">0</h3>
+                    <p class="text-gray-400 text-sm">Success Stories Generated</p>
+                </div>
+
+                <div class="bg-[#111] border border-yellow-500/20 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-yellow-500/50 transition">
+                    <i class="fa-solid fa-users text-yellow-500 text-3xl"></i>
+                    <h3 class="text-3xl font-bold text-yellow-400 counter" data-target="1000000">0</h3>
+                    <p class="text-gray-400 text-sm">Active Users Engaged Worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="bg-[#0A0A0A] py-20 px-6 flex justify-center relative overflow-hidden">
         <div class="absolute w-[400px] h-[400px] bg-yellow-500 opacity-10 blur-[120px] rounded-full top-[-100px] left-[-100px]"></div>
         <div class="absolute w-[400px] h-[400px] bg-yellow-600 opacity-10 blur-[120px] rounded-full bottom-[-100px] right-[-100px]"></div>
@@ -534,5 +564,32 @@ function openYouTubeMobile(videoId) {
         window.open(webLink, '_blank');
     }
 }
+
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const duration = 1000;
+
+    let start = 0;
+    let startTime = null;
+
+    function animateCount(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = timestamp - startTime;
+
+        const current = Math.min(Math.floor((progress / duration) * target), target);
+
+        counter.innerText = current.toLocaleString();
+
+        if (progress < duration) {
+            requestAnimationFrame(animateCount);
+        } else {
+            counter.innerText = target.toLocaleString() + "+";
+        }
+    }
+
+    requestAnimationFrame(animateCount);
+});
 </script>
 </html>
