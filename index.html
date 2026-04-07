@@ -516,10 +516,16 @@ If you’re waiting for the perfect time — this is your sign.
 </body>
 <script>
 function openYouTubeMobile(videoId) {
+    const appLink = `vnd.youtube://${videoId}`;
     const webLink = `https://www.youtube.com/watch?v=${videoId}`;
 
-    // Always open directly (most reliable)
-    window.open(webLink, '_blank');
+    // Try opening YouTube app
+    window.location.href = appLink;
+
+    // Fallback to browser if app not installed
+    setTimeout(() => {
+        window.location.href = webLink;
+    }, 1200);
 }
 </script>
 </html>
