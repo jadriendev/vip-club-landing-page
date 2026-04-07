@@ -254,25 +254,36 @@
 
             <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div class="bg-[#111] border border-yellow-500/20 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-yellow-500/50 transition">
-                    <i class="fa-solid fa-briefcase text-yellow-500 text-3xl"></i>
-                    <h3 class="text-3xl font-bold text-yellow-400">20 Years</h3>
+                    <i class="fa-solid fa-calendar text-yellow-500 text-3xl"></i>
+                    <h3 class="text-3xl font-bold text-yellow-400 flex items-center justify-center">
+                        <span class="counter" data-target="20">0</span>
+                    </h3>
                     <p class="text-gray-400 text-sm">of Digital Experience</p>
                 </div>
                 <div class="bg-[#111] border border-yellow-500/20 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-yellow-500/50 transition">
                     <i class="fa-solid fa-globe text-yellow-500 text-3xl"></i>
-                    <h3 class="text-3xl font-bold text-yellow-400 counter" data-target="20">0</h3>
+                    <h3 class="text-3xl font-bold text-yellow-400 flex items-center justify-center">
+                        <span class="counter" data-target="20">0</span>
+                        <span class="ml-1 mt-[7px]">+</span>
+                    </h3>
                     <p class="text-gray-400 text-sm">Countries continuously expanding</p>
                 </div>
 
                 <div class="bg-[#111] border border-yellow-500/20 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-yellow-500/50 transition">
                     <i class="fa-solid fa-trophy text-yellow-500 text-3xl"></i>
-                    <h3 class="text-3xl font-bold text-yellow-400 counter" data-target="10000">0</h3>
+                    <h3 class="text-3xl font-bold text-yellow-400 flex items-center justify-center">
+                        <span class="counter" data-target="10000">0</span>
+                        <span class="ml-1 mt-[7px]">+</span>
+                    </h3>
                     <p class="text-gray-400 text-sm">Success Stories Generated</p>
                 </div>
 
                 <div class="bg-[#111] border border-yellow-500/20 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-yellow-500/50 transition">
                     <i class="fa-solid fa-users text-yellow-500 text-3xl"></i>
-                    <h3 class="text-3xl font-bold text-yellow-400 counter" data-target="1000000">0</h3>
+                    <h3 class="text-3xl font-bold text-yellow-400 flex items-center justify-center">
+                        <span class="counter" data-target="1000000">0</span>
+                        <span class="ml-1 mt-[7px]">+</span>
+                    </h3>
                     <p class="text-gray-400 text-sm">Active Users Engaged Worldwide</p>
                 </div>
             </div>
@@ -593,7 +604,7 @@ const observer = new IntersectionObserver((entries, observer) => {
                 if (progress < duration) {
                     requestAnimationFrame(animateCount);
                 } else {
-                    counter.innerText = target.toLocaleString() + "+";
+                    counter.innerText = target.toLocaleString();
                 }
             }
 
